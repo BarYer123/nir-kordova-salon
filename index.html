@@ -24,7 +24,45 @@
   --divider:  rgba(255,255,255,0.18);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+@media (max-width: 860px) { html { scroll-padding-top: 112px; } }
+
+/* Demo watermark */
+#demo-watermark {
+  position: relative;
+  height: 26px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+#demo-watermark .dw-track {
+  display: flex;
+  white-space: nowrap;
+  animation: dw-marquee 30s linear infinite;
+  will-change: transform;
+}
+#demo-watermark .dw-track span {
+  display: inline-block;
+  padding-left: 2rem;
+  color: #ffffff;
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  direction: ltr;
+}
+@keyframes dw-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 860px) {
+  #demo-watermark { height: 22px; }
+  #demo-watermark .dw-track span { font-size: 10px; }
+}
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 .skip-link {
   position: absolute; top: -100px; right: 12px;
@@ -452,6 +490,12 @@ footer .built { margin-top: 10px; font-size: 12px; color: #6b635a; }
 <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
 
 <nav class="nav" id="nav">
+  <div id="demo-watermark" aria-hidden="true">
+    <div class="dw-track">
+      <span>Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · </span>
+      <span>Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · Demo — Built By Bar · </span>
+    </div>
+  </div>
   <div class="container nav-inner">
     <a href="#" class="brand">
       <span class="brand-name">ניר קורדובה</span>
